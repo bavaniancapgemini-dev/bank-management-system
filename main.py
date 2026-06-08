@@ -1,3 +1,4 @@
+from login import login
 from database import create_table
 from accounts import create_account, view_accounts, search_account, delete_account
 from accounts import *
@@ -7,10 +8,18 @@ from utils import title
 from history import create_history_table, save_history, view_history
 from loan import *
 from interest import simple_interest
+from emi import calculate_emi
+from fd import *
+from export import export_accounts
+
 
 create_table()
 create_history_table()
 create_loan_table()
+create_fd_table()
+if not login():
+    print("Login failed.")
+    exit()
 
 while True:
 
@@ -30,7 +39,11 @@ while True:
     print("12. View Loans")
     print("13. Interest Calculator")
     print("14. Account Statement")
-    print("15. Exit")
+    print("15. Created Fixed Deposit")
+    print("16. View Fixed Deposits")
+    print("17. EMI Calculator")
+    print("18. Export Accounts")
+    print("19. Exit")
 
     choice = input("Choose: ")
 
@@ -191,6 +204,39 @@ while True:
         print(account)
 
     elif choice == "15":
+
+        name = input("Customer Name: ")
+        amount = float(input("Deposit Amount: "))
+        years = int(input("Number of Years: "))
+
+        create_fd(name, amount, years)
+
+        print("Fixed Deposit Created")
+
+    elif choice == "16":
+
+        fds = view_fd()
+
+        for fd in fds:
+
+            print(fd)
+
+    elif choice == "17":
+
+        loan = float(input("Loan Amount: "))
+        months = int(input("Number of Months: "))
+
+        emi = calculate_emi(loan, months)
+
+        print(f"EMI: {emi}")
+
+    elif choice == "18":
+
+        export_accounts()
+
+        print("Accounts Exported")
+
+    elif choice == "19":
 
         break
 
