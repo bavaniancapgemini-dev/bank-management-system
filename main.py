@@ -12,6 +12,9 @@ from interest import simple_interest
 from emi import calculate_emi
 from fd import *
 from analytics import dashboard
+from card_management import *
+from account_control import *
+from notifications import *
 from export import export_accounts
 
 
@@ -19,6 +22,8 @@ create_table()
 create_history_table()
 create_loan_table()
 create_fd_table()
+create_card_table()
+create_status_column()
 if not login():
     print("Login failed.")
     exit()
@@ -47,7 +52,10 @@ while True:
     print("18. Export Accounts")
     print("19. Analytics Dashboard")
     print("20. Generate PDF Report")
-    print("21. Exit")
+    print("21. Issue ATM Card")
+    print("22. Freeze Account")
+    print("23. Unfreeze Account")
+    print("24. Exit")
 
     choice = input("Choose: ")
 
@@ -251,6 +259,20 @@ while True:
         print("PDF Report Generated")
 
     elif choice == "21":
+        account_id = int(input("Enter Account ID: "))
+        issue_card(account_id)
+        print("ATM Card Issued")
+    elif choice == "22":
+
+        account_id = int(input("Enter Account ID: "))
+        freeze_account(account_id)
+        print("Account Frozen")
+    elif choice == "23":
+
+        account_id = int(input("Enter Account ID: "))
+        unfreeze_account(account_id)
+        print("Account Unfrozen")
+    elif choice == "24":
 
         break
 
