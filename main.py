@@ -21,6 +21,11 @@ from fraud_detection import *
 from otp import *
 from customer_profile import *
 from monthly_interest import *
+from employee import *
+from audit import *
+from password_reset import *
+from branch import *
+from analytics_v2 import *
 
 
 create_table()
@@ -31,6 +36,9 @@ create_card_table()
 create_status_column()
 create_credit_table()
 create_profile_table()
+create_employee_table()
+create_audit_table()
+create_branch_table()
 if not login():
     print("Login failed.")
     exit()
@@ -68,7 +76,15 @@ while True:
     print("27. Assign Credit Scores")
     print("28. View Credit Scores")
     print("29. Apply Monthly Interest")
-    print("30. Exit")
+    print("30. Employee Management")
+    print("31. Add Employee")
+    print("32. View Employees")
+    print("33. Add Branch")
+    print("34. View Branches")
+    print("35. View Audit Logs")
+    print("36. Reset Password")
+    print("37. Advanced Analytics")
+    print("38. Exit")
 
     choice = input("Choose: ")
 
@@ -328,6 +344,45 @@ while True:
         print("Monthly Interest Applied")
 
     elif choice == "30":
+        print("Employee Management")
+
+    elif choice == "31":
+        name = input("Employee Name: ")
+        role = input("Role: ")
+        salary = float(input("Salary: "))
+
+        log_action(
+            f"Employee Added {name}"
+        )
+
+    elif choice == "32":
+        for employee in view_employees():
+            print(employee)
+
+    elif choice == "33":
+
+        name = input("Branch Name: ")
+        location = input("Branch Location: ")
+
+        add_branch(name, location)
+
+    elif choice == "34":
+        for branch in view_branches():
+
+            print(branch)
+
+    elif choice == "35":
+        for log in view_logs():
+
+            print(log)
+
+    elif choice == "36":
+        reset_password()
+
+    elif choice == "37":
+        analytics_report()
+
+    elif choice == "38":
 
         break
 
