@@ -16,6 +16,11 @@ from card_management import *
 from account_control import *
 from notifications import *
 from export import export_accounts
+from credit_score import *
+from fraud_detection import *
+from otp import *
+from customer_profile import *
+from monthly_interest import *
 
 
 create_table()
@@ -24,6 +29,8 @@ create_loan_table()
 create_fd_table()
 create_card_table()
 create_status_column()
+create_credit_table()
+create_profile_table()
 if not login():
     print("Login failed.")
     exit()
@@ -55,7 +62,13 @@ while True:
     print("21. Issue ATM Card")
     print("22. Freeze Account")
     print("23. Unfreeze Account")
-    print("24. Exit")
+    print("24. Update Customer Profile")
+    print("25. Add Customer Profile")
+    print("26. View Profiles")
+    print("27. Assign Credit Scores")
+    print("28. View Credit Scores")
+    print("29. Apply Monthly Interest")
+    print("30. Exit")
 
     choice = input("Choose: ")
 
@@ -272,7 +285,49 @@ while True:
         account_id = int(input("Enter Account ID: "))
         unfreeze_account(account_id)
         print("Account Unfrozen")
+    
     elif choice == "24":
+        name = input("Enter Customer Name: ")
+        email = input("Enter Customer Email: ")
+        phone = input("Enter Customer Phone: ")
+        add_profile(name, email, phone)
+        print("Customer Profile Added")
+    
+    elif choice == "25":
+        name = input("Name: ")
+        email = input("Email: ")
+        phone = input("Phone: ")
+
+        add_profile(name, email, phone)
+
+        print("Profile Added")
+
+    elif choice == "26":
+        for profile in view_profiles():
+
+            print(profile)
+
+    elif choice == "27":
+        name = input("Customer Name: ")
+
+        score = int(
+            input("Credit Score: ")
+        )
+        
+        assign_credit_score(
+            name, score
+        )
+    
+    elif choice == "28":
+        for score in view_credit_scores():
+
+            print(score)
+
+    elif choice == "29":
+        apply_monthly_interest()
+        print("Monthly Interest Applied")
+
+    elif choice == "30":
 
         break
 
