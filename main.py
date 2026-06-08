@@ -2,6 +2,7 @@ from login import login
 from database import create_table
 from accounts import create_account, view_accounts, search_account, delete_account
 from accounts import *
+from pdf_report import create_pdf_report
 from transactions import deposit, withdraw, transfer_money
 from reports import total_money, richest_customer
 from utils import title
@@ -10,6 +11,7 @@ from loan import *
 from interest import simple_interest
 from emi import calculate_emi
 from fd import *
+from analytics import dashboard
 from export import export_accounts
 
 
@@ -43,7 +45,9 @@ while True:
     print("16. View Fixed Deposits")
     print("17. EMI Calculator")
     print("18. Export Accounts")
-    print("19. Exit")
+    print("19. Analytics Dashboard")
+    print("20. Generate PDF Report")
+    print("21. Exit")
 
     choice = input("Choose: ")
 
@@ -237,6 +241,16 @@ while True:
         print("Accounts Exported")
 
     elif choice == "19":
+
+        dashboard()
+
+    elif choice == "20":
+
+        create_pdf_report()
+
+        print("PDF Report Generated")
+
+    elif choice == "21":
 
         break
 
