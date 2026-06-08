@@ -15,3 +15,21 @@ def total_money():
     connection.close()
 
     return total
+
+def richest_customer():
+
+    import sqlite3
+
+    connection = sqlite3.connect("bank.db")
+
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "SELECT * FROM accounts ORDER BY balance DESC LIMIT 1"
+    )
+
+    customer = cursor.fetchone()
+
+    connection.close()
+
+    return customer
