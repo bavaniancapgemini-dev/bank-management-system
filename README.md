@@ -163,5 +163,37 @@ python main.py
 - Generate customer credit scores
 - Issue ATM cards
 - Freeze and active accounts
--
+- Generate PGF reports
+- Export account data to JSON
+
+🎯 Learning Outcomes
+This project demonstrates:
+- Puthon Programming
+- SQLite Database Management
+- Modular Project Structure
+- Authentication Systems
+- Banking Business Logic
+- Data analytics
+- File Handling
+- JSON Processing
+- PDF Generation
+- Security Concepts
+- Audit Logging
+
+🔮 Future Roadmap (v9.0)
+- Flask Web Application
+- Customer Dashboard
+- Admin Dashboard
+- REST SPI's
+- Email Notification
+- Charts & Visualizations
+- Online Banking Portal
+- Account Statements
+- Mobile-Friendly UI
+
+👨‍💻 Author
+Bavani.ch
+GitHub: https://github.com/bavaniancapgemini-dev
+
+
 
